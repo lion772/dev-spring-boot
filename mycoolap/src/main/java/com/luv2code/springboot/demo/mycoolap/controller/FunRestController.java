@@ -1,11 +1,15 @@
 package com.luv2code.springboot.demo.mycoolap.controller;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.lang.NonNull;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class FunRestController {
@@ -23,6 +27,11 @@ public class FunRestController {
     @GetMapping("/")
     public List<String> getAllList() {
         return this.strings;
+    }
+
+    @PostMapping("/")
+    public void addNewString(@Valid @NonNull @RequestBody Optional<String> payload) {
+        this.strings.add(payload.get());
     }
 
 }
