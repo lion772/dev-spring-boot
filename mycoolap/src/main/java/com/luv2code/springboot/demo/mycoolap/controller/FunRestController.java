@@ -15,7 +15,10 @@ import java.util.Optional;
 public class FunRestController {
 
     @Value("${person.name}")
-    private String name;
+    private String personName;
+
+    @Value("${team.name}")
+    private String teamName;
 
     private List<String> strings = new ArrayList<String>();
 
@@ -23,6 +26,9 @@ public class FunRestController {
         this.strings.add("William");
         this.strings.add("Franni");
     }
+
+    @GetMapping("/teaminfo")
+    public String getTeamName() { return teamName; }
 
     @GetMapping("/")
     public List<String> getAllList() {
