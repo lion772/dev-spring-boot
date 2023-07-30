@@ -2,6 +2,7 @@ package com.lion772.springcoredemo.rest;
 
 import com.lion772.springcoredemo.common.Coach;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,8 +11,14 @@ public class DemoController {
 
     private Coach coachDao;
 
+    //@Autowired
+    //public void constructor(Coach coachDao){
+    //    this.coachDao = coachDao;
+    //}
+
     @Autowired
-    public void constructor(Coach coachDao){
+    public void setCoach(@Qualifier("gymDao") Coach coachDao) {
+        //setter injection
         this.coachDao = coachDao;
     }
 
@@ -19,4 +26,8 @@ public class DemoController {
     public String getString() {
         return this.coachDao.getDailyActivities();
     }
+
+    // Behind the scenes
+    // Coach CoachImplementation = new CoachImplementation();
+    // DemoController demoController = new DemoController(coachImplementation);
 }
