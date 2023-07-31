@@ -9,25 +9,31 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DemoController {
 
-    private Coach coachDao;
+    private Coach mySoccerCoach;
+
+    private Coach mySwimCoach;
+
+
+    @Autowired
+    public void constructor(
+            @Qualifier("soccerCoach") Coach soccerCoach,
+            @Qualifier("aquatic") Coach swimCoach){
+        mySoccerCoach = soccerCoach;
+        mySwimCoach = swimCoach;
+    }
 
     //@Autowired
-    //public void constructor(Coach coachDao){
+    //public void setCoach(@Qualifier("gymDao") Coach coachDao) {
+        //setter injection
     //    this.coachDao = coachDao;
     //}
 
-    @Autowired
-    public void setCoach(@Qualifier("gymDao") Coach coachDao) {
-        //setter injection
-        this.coachDao = coachDao;
-    }
-
     @GetMapping("/dailyworkout")
     public String getString() {
-        return this.coachDao.getDailyActivities();
+        return mySwimCoach.getDailyActivities();
     }
 
     // Behind the scenes
-    // Coach CoachImplementation = new CoachImplementation();
-    // DemoController demoController = new DemoController(coachImplementation);
+    // Coach soccerCoach = new SoccerCoach(); // <--- implementation
+    // DemoController demoController = new DemoController(soccerCoach);
 }
