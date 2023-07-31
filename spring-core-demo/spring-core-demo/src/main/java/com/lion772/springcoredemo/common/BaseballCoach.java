@@ -2,10 +2,10 @@ package com.lion772.springcoredemo.common;
 
 import org.springframework.stereotype.Component;
 
-@Component("soccerDao")
-public class SoccerCoach implements Coach{
+@Component("baseballDao")
+public class BaseballCoach implements Coach{
     @Override
     public String getDailyActivities() {
-        return "Score more than one goal per match.";
+        return "Spend 30 minutes in batting practice";
     }
 }
