@@ -12,9 +12,7 @@ public class DemoController {
     private Coach mySoccerCoach;
 
     @Autowired
-    public void constructor(
-            @Qualifier("soccerCoach") Coach soccerCoach
-    ){
+    public void constructor(@Qualifier("soccerCoach") Coach soccerCoach){
         mySoccerCoach = soccerCoach;
     }
 
