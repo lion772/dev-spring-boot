@@ -1,12 +1,9 @@
 package com.lion772.springcoredemo.common;
 
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 //@Primary
 @Component
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class SoccerCoach implements Coach{
 
     public SoccerCoach() {
