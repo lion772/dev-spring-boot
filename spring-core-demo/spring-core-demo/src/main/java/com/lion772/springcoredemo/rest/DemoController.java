@@ -9,11 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DemoController {
 
-    private Coach coachDao;
+    private Coach mySoccerCoach;
+    private Coach notMySoccerCoach;
+
 
     @Autowired
-    public void constructor(@Qualifier("gymDao") Coach coachDao){
-        this.coachDao = coachDao;
+    public void constructor(
+            @Qualifier("soccerCoach") Coach soccerCoach,
+            @Qualifier("soccerCoach") Coach anotherSoccerCoach
+    ){
+        mySoccerCoach = soccerCoach;
+        notMySoccerCoach = anotherSoccerCoach;
     }
 
     //@Autowired
@@ -24,10 +30,15 @@ public class DemoController {
 
     @GetMapping("/dailyworkout")
     public String getString() {
-        return this.coachDao.getDailyActivities();
+        return mySoccerCoach.getDailyActivities() + " " + notMySoccerCoach.getDailyActivities();
+    }
+
+    @GetMapping("/check")
+    public String check() {
+        return "Comparing beans: mySoccerCoach == notMySoccerCoach: " + (mySoccerCoach == notMySoccerCoach);
     }
 
     // Behind the scenes
-    // Coach CoachImplementation = new CoachImplementation();
-    // DemoController demoController = new DemoController(coachImplementation);
+    // Coach soccerCoach = new SoccerCoach(); // <--- implementation
+    // DemoController demoController = new DemoController(soccerCoach);
 }

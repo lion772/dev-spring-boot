@@ -2,7 +2,7 @@ package com.lion772.springcoredemo.common;
 
 import org.springframework.stereotype.Component;
 
-@Component("tennisDao")
+@Component
 public class TennisCoach implements Coach{
     @Override
     public String getDailyActivities() {
