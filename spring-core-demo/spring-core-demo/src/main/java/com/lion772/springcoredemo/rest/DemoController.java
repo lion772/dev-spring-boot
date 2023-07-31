@@ -11,9 +11,15 @@ public class DemoController {
 
     private Coach mySoccerCoach;
 
+    private Coach mySwimCoach;
+
+
     @Autowired
-    public void constructor(@Qualifier("soccerCoach") Coach soccerCoach){
+    public void constructor(
+            @Qualifier("soccerCoach") Coach soccerCoach,
+            @Qualifier("swimCoach") Coach swimCoach){
         mySoccerCoach = soccerCoach;
+        mySwimCoach = swimCoach;
     }
 
     //@Autowired
@@ -24,7 +30,7 @@ public class DemoController {
 
     @GetMapping("/dailyworkout")
     public String getString() {
-        return mySoccerCoach.getDailyActivities();
+        return mySwimCoach.getDailyActivities();
     }
 
     // Behind the scenes
