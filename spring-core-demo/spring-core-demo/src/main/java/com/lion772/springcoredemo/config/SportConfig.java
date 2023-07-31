@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SportConfig {
 
-    @Bean
+    @Bean("aquatic") // --> give a custom id is optional. But if you do, change the argument in @Qualifier within DemoController.
     public Coach swimCoach() {
         return new SwimCoach();
     }

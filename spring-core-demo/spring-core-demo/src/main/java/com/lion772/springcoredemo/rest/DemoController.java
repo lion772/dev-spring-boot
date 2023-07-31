@@ -17,7 +17,7 @@ public class DemoController {
     @Autowired
     public void constructor(
             @Qualifier("soccerCoach") Coach soccerCoach,
-            @Qualifier("swimCoach") Coach swimCoach){
+            @Qualifier("aquatic") Coach swimCoach){
         mySoccerCoach = soccerCoach;
         mySwimCoach = swimCoach;
     }
