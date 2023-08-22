@@ -2,13 +2,15 @@ package com.lion772.cruddemo.DAO;
 
 import com.lion772.cruddemo.entity.Student;
 
+import java.util.List;
+
 public interface StudentDAO {
 
      void save(Student theStudent);
 
      Student findById(Integer id);
 
-     Student[] findAll();
+     List<Student> findAll();
 
      Student findByLastName(String lastName);
 
