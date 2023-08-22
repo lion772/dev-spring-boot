@@ -30,8 +30,12 @@ public class CrudDemoApplication {
 	}
 
 	private void queryForStudents(StudentDAO studentDao) {
+		// get a list of students
 		List<Student> students = studentDao.findAll();
-		System.out.println(students);
+		// display list of students
+		for (Student student: students) {
+			System.out.println(student);
+		}
 
 	}
 
