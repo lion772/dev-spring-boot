@@ -6,7 +6,7 @@ public interface StudentDAO {
 
      void save(Student theStudent);
 
-     Student findById(int id);
+     Student findById(Integer id);
 
      Student[] findAll();
 

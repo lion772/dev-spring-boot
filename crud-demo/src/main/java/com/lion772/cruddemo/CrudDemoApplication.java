@@ -20,8 +20,35 @@ public class CrudDemoApplication {
 
 		//Java lambda expression -> shorthand notation for creating an implementation for CommandLineRunner
 		return runner -> {
-			createStudent(studentDao);
+			//createStudent(studentDao);
+			//createMultipleStudents(studentDao);
+			readStudent(studentDao);
 		};
+	}
+
+	private void readStudent(StudentDAO studentDAO) {
+		//create student object
+		Student tempStudent = new Student("Daffy", "duck", "daffy@gmail.com");
+
+		//save the student object
+		studentDAO.save(tempStudent);
+
+		//retrieve student based on the id
+		Student student = studentDAO.findById(tempStudent.getId());
+		System.out.println( student);
+
+
+	}
+
+	private void createMultipleStudents(StudentDAO studentDao) {
+		Student student1 = new Student("William", "Steinke", "william.steinkedemello@hotmail.com");
+		Student student2 = new Student("Franziska", "Steinke", "franziska.steinkedemello@hotmail.com");
+		Student student3 = new Student("Arthur", "Steinke", "arthur.steinkedemello@hotmail.com");
+
+		System.out.println("Saving the students ...");
+		studentDao.save(student1);
+		studentDao.save(student2);
+		studentDao.save(student3);
 	}
 
 	private void createStudent(StudentDAO studentDao) {
