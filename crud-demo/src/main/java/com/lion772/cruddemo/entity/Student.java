@@ -2,9 +2,12 @@ package com.lion772.cruddemo.entity;
 
 import jakarta.persistence.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "student")
 public class Student {
+
 
     //define fields
     @Id
@@ -34,6 +37,16 @@ public class Student {
     }
 
     //define getters / setters
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        UUID uuid =  UUID.randomUUID();
+        this.id = id;
+    }
+
 
     public String getFirstName() {
         return firstName;
@@ -70,3 +83,5 @@ public class Student {
                 '}';
     }
 }
+
+//Architecture diagram: Student DAO <-> Entity Manager <-> Data Source <-> DB
