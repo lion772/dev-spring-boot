@@ -12,7 +12,7 @@ public interface StudentDAO {
 
      List<Student> findAll();
 
-     Student findByLastName(String lastName);
+     List<Student> findByLastName(String lastName);
 
      void update(Student updatedStudent);
 
